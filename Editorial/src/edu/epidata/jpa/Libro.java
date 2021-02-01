@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -14,7 +12,6 @@ import javax.persistence.OneToMany;
 public class Libro {
 	
 	@Id //Indica que es el identificador de las personas
-	@GeneratedValue(strategy = GenerationType.AUTO) //Y que se crea automáticamente
 	private int id;
 	
 	@Column
@@ -34,4 +31,52 @@ public class Libro {
 	public Libro() {
 	//Requerido
 	}
+	
+	public Libro(int id, String nombre, int anio, List<Persona> editores) {
+		this.id = id;
+		this.nombre = nombre;
+		this.anio = anio;
+		this.editores = editores;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getAnio() {
+		return anio;
+	}
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+	public List<Persona> getEditores() {
+		return editores;
+	}
+
+	public void setEditores(List<Persona> editores) {
+		this.editores = editores;
+	}
+
+	public List<Capitulo> getCapitulos() {
+		return capitulos;
+	}
+
+	public void setCapitulos(List<Capitulo> capitulos) {
+		this.capitulos = capitulos;
+	}
+	
 }

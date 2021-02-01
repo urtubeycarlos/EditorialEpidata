@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -14,7 +12,6 @@ import javax.persistence.ManyToOne;
 public class Capitulo {
 	
 	@Id //Indica que es el identificador de las personas
-	@GeneratedValue(strategy = GenerationType.AUTO) //Y que se crea automáticamente
 	private int id;
 	
 	@Column
@@ -40,4 +37,62 @@ public class Capitulo {
 	public Capitulo() {
 	//Requerido
 	}
+	
+	public Capitulo(int id, String titulo, int paginas, Persona revisor, List<Persona> autores, Libro libro) {
+		this.id = id;
+		this.titulo = titulo;
+		this.paginas = paginas;
+		this.revisor = revisor;
+		this.autores = autores;
+		this.libro = libro;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public int getPaginas() {
+		return paginas;
+	}
+
+	public void setPaginas(int paginas) {
+		this.paginas = paginas;
+	}
+
+	public Persona getRevisor() {
+		return revisor;
+	}
+
+	public void setRevisor(Persona revisor) {
+		this.revisor = revisor;
+	}
+
+	public List<Persona> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(List<Persona> autores) {
+		this.autores = autores;
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
+	
 }
