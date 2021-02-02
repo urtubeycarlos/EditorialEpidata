@@ -12,7 +12,6 @@
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:MyDerbyDb;create=true" />
 
-			
 			<!-- Propiedad para la generacion automatica del esquema de base de datos -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
