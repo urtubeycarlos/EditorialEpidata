@@ -22,8 +22,8 @@ public class Libro {
 	
 	@ManyToMany
 	private List<Persona> editores = new ArrayList<>();
-	//Un libro tiene muchos capítulos, pero un capitulo está en un solo libro
 	
+	//Un libro tiene muchos capítulos, pero un capitulo está en un solo libro
 	//El mapeo es realizado por Capitulo.
 	@OneToMany(mappedBy = "libro")
 	private List<Capitulo> capitulos = new ArrayList<>();

@@ -62,4 +62,13 @@ public class Persona {
 		this.mail = mail;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Persona: id = " + this.id + ", ");
+		sb.append(this.nombre + " " +this.apellido + ", ");
+		sb.append(this.mail);
+		return sb.toString();
+	}
+	
 }

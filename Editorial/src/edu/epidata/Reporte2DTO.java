@@ -7,15 +7,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-public class Reporte1DTO {
-
-	private int personaId;
-	private long cant;
+public class Reporte2DTO {
 	
-	public Reporte1DTO(int personaId, long cant) {
+	private int personaId;
+	private long cantPags;
+	
+	public Reporte2DTO(int personaId, long cantPags) {
 		super();
 		this.personaId = personaId;
-		this.cant = cant;
+		this.cantPags = cantPags;
 	}
 	
 	public int getPersonaId() {
@@ -26,18 +26,18 @@ public class Reporte1DTO {
 		this.personaId = personaId;
 	}
 
-	public long getCant() {
-		return cant;
+	public long getCantPags() {
+		return cantPags;
 	}
 
-	public void setCant(long cant) {
-		this.cant = cant;
+	public void setCantPags(long cantPags) {
+		this.cantPags = cantPags;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Reporte1DTO [personaId=" + personaId +
-		 ", cant=" + cant + "]";
+		return "Reporte2DTO [personaId=" + personaId +
+		 ", cantPags=" + cantPags + "]";
 	}
 	
 	public static void main(String... args) {
@@ -45,20 +45,19 @@ public class Reporte1DTO {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();
-		TypedQuery<Reporte1DTO> q = em.
+		TypedQuery<Reporte2DTO> q = em.
 		createQuery("SELECT new "
-			 + "edu.epidata.Reporte1DTO(p.id, count(*))"
-			+ " FROM Libro l JOIN l.editores p"
-			+ " WHERE l.anio = :anio"
-			+ " GROUP BY p.id ", Reporte1DTO.class);
+			 + "edu.epidata.Reporte2DTO(r.id, count(c.paginas))"
+			+ " FROM Capitulo c JOIN c.revisor r"
+			+ " WHERE c.libro.anio = :anio"
+			+ " GROUP BY r.id ", Reporte2DTO.class);
 		q.setParameter("anio", 2017);
-		List<Reporte1DTO> res = q.getResultList();
+		List<Reporte2DTO> res = q.getResultList();
 		//Imprime los resultados
 		res.forEach(r -> System.out.println(r));
 		em.getTransaction().commit();
 		
 		em.close();
 		emf.close();
-
 	}
 }
