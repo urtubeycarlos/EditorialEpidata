@@ -36,7 +36,7 @@ public class Reporte3DTO {
 		TypedQuery<Reporte3DTO> q = em.
 		createQuery("SELECT new "
 				 + "edu.epidata.Reporte3DTO(a.id, count(l))"
-				+ " FROM Libro l JOIN l.capitulos.autores a"
+				+ " FROM Libro l JOIN l.capitulos c JOIN c.autores a"
 				+ " GROUP BY a.id ", Reporte3DTO.class);
 		List<Reporte3DTO> res = q.getResultList();
 		//Imprime los resultados
